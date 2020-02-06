@@ -1,4 +1,4 @@
-// select all elements
+
 const start = document.getElementById("start");
 const quiz = document.getElementById("quiz");
 const question = document.getElementById("question");
@@ -12,14 +12,14 @@ const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
-// create our questions
+
 let questions = [
     {
         question : "What does HTML stand for?",
         choiceA : "HyperText Markup Language",
         choiceB : "HyperText Makeup Language",
         choiceC : "Hyderabad Tele-Mattress Lmt.",
-	choiceD : "Hindustan Tele_Mattress Lmt.",
+	choiceD : "Hindustan Tele-Mattress Lmt.",
         correct : "A"
     },{
         question : "What does CSS stand for?",
@@ -45,18 +45,17 @@ let questions = [
     }
 ];
 
-// create some variables
 
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
-const questionTime = 15; // 10s
-const gaugeWidth = 500; // 150px
+const questionTime = 15;
+const gaugeWidth = 500; 
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 let score = 0;
 
-// render a question
+
 function renderQuestion(){
     let q = questions[runningQuestion];
     
@@ -76,7 +75,7 @@ function startQuiz(){
     quiz.style.display = "block";
     renderProgress();
     renderCounter();
-    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+    TIMER = setInterval(renderCounter,1000); 
 }
 
 // render progress
@@ -94,13 +93,11 @@ function renderCounter(){
         count++
     }else{
         count = 0;
-        // change progress color to red
         answerIsWrong();
         if(runningQuestion < lastQuestion){
             runningQuestion++;
             renderQuestion();
         }else{
-            // end the quiz and show the score
             clearInterval(TIMER);
             scoreRender();
         }
